@@ -1,22 +1,16 @@
 namespace MauiAppTempoNow.Models;
 
-    public class Tempo : ContentPage
-    {
-        public class TempoDetails
-        {
-            public MainInfo Main { get; set; }
-            public List<WeatherInfo> Weather { get; set; }
-
-            public class MainInfo
-            {
-                public double Temp { get; set; }
-                public double Humidity { get; set; }
-            }
-
-            public class WeatherInfo
-            {
-                public string Description { get; set; }
-            }
-        }
-    }
+public class Tempo
+{
+    public double? lon { get; set; }
+    public double? lat { get; set; }
+    public double? temp_min { get; set; }
+    public double? temp_max { get; set; }
+    public int? visibility { get; set; }
+    public double? speed { get; set; }
+    public string? main { get; set; }
+    public string? description { get; set; }
+    public string? sunrise { get; set; }
+    public string? sunset { get; set; }
+}
 
