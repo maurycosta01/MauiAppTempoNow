@@ -1,12 +1,12 @@
 ﻿using MauiAppTempoNow.Models;
 using System.Text.Json;
+using System;
 
 namespace MauiAppTempoNow
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
-
 
         const string apikey = "275e791c559a9b524359de49588b906f"; // 🔐 Substitua pela chave da OpenWeather
         const string urlbase = "https://api.openweathermap.org/data/2.5/weather";
@@ -16,10 +16,9 @@ namespace MauiAppTempoNow
             InitializeComponent();
         }
 
-
-
         private async void OnBuscarClimaClicked(object sender, EventArgs e)
         {
+
             string cidade = txt_cidade.Text?.Trim();
 
             if (string.IsNullOrWhiteSpace(cidade))
@@ -36,7 +35,6 @@ namespace MauiAppTempoNow
                 lbl_res_tempo.Text = tempo.ToString();
             }
         }
-
 
         private Tempo ObterClimaParaCidade(string cidade)
         {
@@ -78,14 +76,19 @@ namespace MauiAppTempoNow
                 // Desserializar JSON em objeto Tempo
                 using var doc = JsonDocument.Parse(json);
                 var root = doc.RootElement;
+                var sys = root.GetProperty("sys");
 
                 return new Tempo
                 {
                     Clima = $"Clima em {cidade}",
                     description = root.GetProperty("weather")[0].GetProperty("description").GetString(),
                     Temperatura = root.GetProperty("main").GetProperty("temp").GetDouble(),
+                    temp_min = root.GetProperty("main").GetProperty("temp_min").GetDouble(),
+                    temp_max = root.GetProperty("main").GetProperty("temp_max").GetDouble(),
                     velocidade = root.GetProperty("wind").GetProperty("speed").GetDouble(),
-                    visibility = root.GetProperty("visibility").GetInt32()
+                    visibility = root.GetProperty("visibility").GetInt32(),
+                    lat = root.GetProperty("coord").GetProperty("lat").GetDouble(),
+                    lon = root.GetProperty("coord").GetProperty("lon").GetDouble()
                 };
             }
             catch (HttpRequestException)

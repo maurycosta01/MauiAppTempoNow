@@ -25,7 +25,13 @@ public class Tempo
                $"Temperatura: {Temperatura}°C\n" +
                $"Descrição: {description}\n" +
                $"Vento: {velocidade} km/h\n" +
-               $"Visibilidade: {visibility / 1000.0} km";
+               $"Visibilidade: {visibility / 1000.0} km\n" +
+               $"Latitude: {lat} \n" +
+               $"Longitude: {lon} \n" +
+               $"Temp Máx: {temp_max} \n" +
+               $"Temp Min: {temp_min} \n";
+
+        ;
     }
     public string InterpretarCondicao()
     {
