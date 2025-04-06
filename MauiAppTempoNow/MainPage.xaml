@@ -4,10 +4,28 @@
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
             <Entry x:Name="txt_cidade"/>
-            <Button Text="Buscar" Clicked="Button_Clicked"/>
-            <Label x:Name="lbl_res" />
+
+            <Button   Text="Verificar Clima"
+         Clicked="OnBuscarClimaClicked"        BackgroundColor="#2196F3"
+        TextColor="White"
+        CornerRadius="10" />
+
+            <Label 
+        x:Name="lbl_res"
+        FontSize="22"
+        TextColor="White"
+        HorizontalOptions="Center" />
+
+            <Label 
+        x:Name="lbl_res_tempo"
+        FontSize="18"
+        TextColor="WhiteSmoke"
+        LineBreakMode="WordWrap" />
 
         </VerticalStackLayout>
+        
+        
+
     </ScrollView>
 
 </ContentPage>

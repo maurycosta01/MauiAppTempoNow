@@ -10,13 +10,13 @@ public class WeatherService
     {
         Tempo? t = null;
 
-        string chave = "275e791c559a9b524359de49588b906f";//imprementar a chave api 
+        const string apikey = "275e791c559a9b524359de49588b906f";//imprementar a chave api 
 
-        string url = $"http://api.openweathermap.org/data/2.5/weather?" + $"q={cidade}&appid={chave}&units=metric";
+        const string urlbase = $"http://api.openweathermap.org/data/2.5/weather?";
 
         using (HttpClient client = new HttpClient())
         {
-            HttpResponseMessage resp = await client.GetAsync(url);
+            HttpResponseMessage resp = await client.GetAsync(urlbase);
 
             if (resp.IsSuccessStatusCode)
             {
